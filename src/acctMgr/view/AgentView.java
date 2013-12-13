@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -45,6 +46,12 @@ public class AgentView extends JFrameView {
 	public AgentView(Model model, Controller controller){
 		super(model, controller);
 		this.getContentPane().add(getContent());
+		Toolkit toolkit =  Toolkit.getDefaultToolkit();
+		Dimension dim = toolkit.getScreenSize();
+		int x = (int) ((dim.getWidth() - this.getWidth()) * 0.5f);
+	    int y = (int) ((dim.getHeight() - this.getHeight()) * 0.5f);
+	    this.setLocation(x - 10, y - 10);
+	    
 		final Controller contr = controller;
 		addWindowListener(new java.awt.event.WindowAdapter() {
 		    public void windowClosing(java.awt.event.WindowEvent evt) {
